@@ -1,11 +1,9 @@
+//no es un componente
+//Peguelo en App.js para visualizarlo
+
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, Touchable, TouchableOpacity, View, FlatList ,ScrollView} from 'react-native';
-
-import Header from './app/components/Header';
-import Boxes from './app/components/Boxes';
-
-//const courses= [{name: 'Matemática'}, {name: 'Física'}, {name: 'Química'},{name: 'C.Computación'}]
+import { StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
 
 class App extends Component {
   constructor(props){
@@ -30,8 +28,21 @@ class App extends Component {
     const {counter} = this.state;
   return (
     <View style={styles.container}>
-      <Header />
-      <Boxes/>
+      <View style = {styles.subcontainer}>
+          <TouchableOpacity style={styles.btn} onPress={this.handleDown}>
+            <Text style={styles.btnTxt}>-</Text>
+          </TouchableOpacity>
+
+          <View style={styles.counterContainer}>
+            <Text style={styles.counter}>{counter}</Text>
+          </View>
+
+          <TouchableOpacity style={styles.btn} onPress={this.handleUp}>
+            <Text style={styles.btnTxt}>+</Text>
+          </TouchableOpacity>
+          
+      </View>
+      <StatusBar style="auto" />
     </View>
   );
   }
@@ -41,8 +52,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#81ecec',
-    /*alignItems: 'center',
-    justifyContent: 'center',*/
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   subcontainer: {
     height: 50,
